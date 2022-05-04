@@ -1,3 +1,6 @@
 $ cd work
 $ git clone git@github.com:GhitaB/etranslation-python-demo.git
 $ cd etranslation-python-demo
+$ virtualenv -p2 ./venv
+$ ./venv/bin/pip install requests
+$ ./venv/bin/pip install beautifulsoup4
