@@ -4,3 +4,6 @@ $ cd etranslation-python-demo
 $ virtualenv -p2 ./venv
 $ ./venv/bin/pip install requests
 $ ./venv/bin/pip install beautifulsoup4
+$ vim secret_config.py.template - and follow the instructions (set cookies)
+$ vim config.py - see what we have, set target language, path to file, etc
+$ ./venv/bin/python upload_file.py
