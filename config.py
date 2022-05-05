@@ -6,3 +6,13 @@ SOURCE_LANGUAGE = "EN"
 TARGET_LANGUAGE = "RO"
 
 FILE_EXAMPLE = "./files/test-file.html"
+
+UPLOAD_FORM_DATA = { # you can see these if you upload a document for translation
+    # and check the parameters in Network tab for this post request
+    'sourceLanguage': SOURCE_LANGUAGE,
+    'domain': 'GEN',
+    'targetLanguages': TARGET_LANGUAGE,
+    'sendEmail': 'false',
+    'delete': 'false',
+    'outputFormat': '',
+}

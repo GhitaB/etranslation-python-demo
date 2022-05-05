@@ -5,9 +5,10 @@ import logging
 import random
 import requests
 from secret_config import COOKIES
-from config import HEADERS, UPLOAD_URL, SOURCE_LANGUAGE, TARGET_LANGUAGE, FILE_EXAMPLE
+from config import HEADERS, SOURCE_LANGUAGE, TARGET_LANGUAGE, FILE_EXAMPLE
+from config import UPLOAD_URL, UPLOAD_FORM_DATA
 
-def send_document_for_translation(filename, html_file, from_lang, to_lang):
+def send_document_for_translation(filename, html_file):
     """ Send HTML file to be translated
 
         filename: you can set a custom filename for the file to be uploaded
@@ -21,20 +22,11 @@ def send_document_for_translation(filename, html_file, from_lang, to_lang):
         to_lang: the target language (Example: "RO")
 
     """
-    upload_form_data = { # you can see these if you upload a document for translation
-        # and check the parameters in Network tab for this post request
-        'sourceLanguage': from_lang,
-        'domain': 'GEN',
-        'targetLanguages': to_lang,
-        'sendEmail': 'false',
-        'delete': 'false',
-        'outputFormat': '',
-    }
     files = {'file': (filename, open(html_file))}
 
     response = requests.post(
         UPLOAD_URL,
-        upload_form_data,
+        UPLOAD_FORM_DATA,
         headers=HEADERS,
         cookies=COOKIES,
         files=files
@@ -76,8 +68,6 @@ table (the tab named 'My translation requests'): %s", filename_translated)
     resp = send_document_for_translation(
         filename=custom_filename,
         html_file=FILE_EXAMPLE,
-        to_lang=TARGET_LANGUAGE,
-        from_lang=SOURCE_LANGUAGE
     )
 
     if resp.ok is not True:
