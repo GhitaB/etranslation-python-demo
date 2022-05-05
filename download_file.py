@@ -61,7 +61,7 @@ def extract_files_data():
 
     if len(js_scripts) == 0:
         logger.error("Cannot extract the files from table")
-        return None
+        return {}
 
     js_script = js_scripts[-1]
     js_variable_value = js_script.string.split("var list =")[1].split("}];")[0] + "}]"
@@ -81,6 +81,7 @@ def main():
 
     # Extract files data
     files = extract_files_data()
+    logger.info("Extracted data for: %s files", str(len(files.keys())))
 
     logger.info("We will try to download the translated file.")
 
