@@ -74,7 +74,7 @@ table (the tab named 'My translation requests'): %s", filename_translated)
     # Try to upload the file to be translated
     logger.info("Good. Let's try to upload the file.")
     resp = send_document_for_translation(
-        filename=filename,
+        filename=custom_filename,
         html_file=FILE_EXAMPLE,
         to_lang=TARGET_LANGUAGE,
         from_lang=SOURCE_LANGUAGE
@@ -83,6 +83,7 @@ table (the tab named 'My translation requests'): %s", filename_translated)
     if resp.ok is not True:
         logger.error("Failed with code: %s and reason: %s. Check config and retry.",
                 resp.status_code, resp.reason)
+        logger.error("Response content: %s", resp.content)
 
 if __name__ == '__main__':
     main()
