@@ -84,6 +84,8 @@ table (the tab named 'My translation requests'): %s", filename_translated)
         logger.error("Failed with code: %s and reason: %s. Check config and retry.",
                 resp.status_code, resp.reason)
         logger.error("Response content: %s", resp.content)
+    else:
+        logger.info("File uploaded successfully.")
 
 if __name__ == '__main__':
     main()
