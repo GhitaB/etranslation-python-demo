@@ -5,7 +5,8 @@ import json
 import requests
 from bs4 import BeautifulSoup
 from secret_config import COOKIES
-from config import HEADERS, TARGET_LANGUAGE
+from config import HEADERS, TARGET_LANGUAGE, FILES_URL
+from config import DOWNLOAD_URL, DOWNLOADED_FILES_FOLDER
 
 files_data = {}
 
@@ -18,7 +19,6 @@ def download_translated(filename):
         logger.error("Missing info for this filename. Cannot download.")
         return "pending"
 
-    url = 'https://webgate.ec.europa.eu/etranslation/download.html'
     form_data = {
         'clientRequestId': client_request_id,
         'targetLanguage': TARGET_LANGUAGE,
@@ -27,7 +27,7 @@ def download_translated(filename):
         'deleteFile': 'false'
     }
     response = requests.post(
-        url,
+        DOWNLOAD_URL,
         form_data,
         headers=HEADERS,
         cookies=COOKIES,
@@ -37,7 +37,7 @@ def download_translated(filename):
         if len(response.content) == 0:
             logger.warning("0 bytes response. Check clientRequestId.")
             return 'pending'
-        file = open('./files/' + filename, "wb")
+        file = open(DOWNLOADED_FILES_FOLDER + filename, "wb")
         file.write(response.content)
         file.close()
         logger.info("Downloading... " + filename)
@@ -48,9 +48,8 @@ def extract_files_data():
     """ Get files data from eTranslation table in 'My translation requests'
     """
     logger = logging.getLogger(__name__)
-    url = 'https://webgate.ec.europa.eu/etranslation/translationRequestHistory.html'
     response = requests.get(
-        url,
+        FILES_URL,
         headers=HEADERS,
         cookies=COOKIES,
     )
