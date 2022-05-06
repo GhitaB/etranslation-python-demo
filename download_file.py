@@ -85,7 +85,7 @@ def main():
     logger.info("We will try to download the translated file.")
 
     # The file
-    filename_translated = 'EN-RO-2022_05_05-14_42_00-7E6AF22B32B64F65_RO.html'
+    filename_translated = 'EN-IT-2022_05_05-15_51_07-1CF2D992A8B900BE_IT.html'
     logger.info("Filename: %s", filename_translated)
 
     # Download

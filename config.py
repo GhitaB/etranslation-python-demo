@@ -5,7 +5,7 @@ DOWNLOAD_URL = 'https://webgate.ec.europa.eu/etranslation/download.html'
 FILES_URL = 'https://webgate.ec.europa.eu/etranslation/translationRequestHistory.html'
 HEADERS = {'User-Agent': 'Mozilla/5.0'}
 SOURCE_LANGUAGE = "EN"
-TARGET_LANGUAGE = "RO"
+TARGET_LANGUAGE = "IT"
 
 FILE_EXAMPLE = "./files/test-file.html"
 DOWNLOADED_FILES_FOLDER = "./downloaded/"

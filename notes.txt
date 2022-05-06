@@ -8,3 +8,6 @@ $ vim secret_config.py.template - and follow the instructions (set cookies)
 $ vim config.py - see what we have, set target language, path to file, etc
 $ ./venv/bin/python upload_file.py
 $ ./venv/bin/python download_file.py
+
+$ ./venv/bin/pip install zeep
+$ ./venv/bin/python demo2.py
