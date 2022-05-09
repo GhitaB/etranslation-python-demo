@@ -6,6 +6,19 @@ from secret_config import USERNAME, PASSWORD, EMAIL
 from config import SOURCE_LANGUAGE, TARGET_LANGUAGE
 import base64
 
+
+some_html = """
+<div>Please translate this div. It contains two paragraphs.
+<p>The first one.</p>
+<p>The second</p>
+</div>
+<div>
+This is another div. <b>Bold text</b>
+</div>
+"""
+
+encoded_html = base64.b64encode(some_html)
+
 with open("./files/test-file.html", "rb") as html_file:
     encoded_file = base64.b64encode(html_file.read())
 
@@ -22,7 +35,8 @@ response = client.service.translate(
      # 'text-to-translate': 'Please translate this text for me.',
 
      "document-to-translate-base64" : {
-        "content" : encoded_file,
+        # "content" : encoded_file,
+        "content" : encoded_html,
         "format" : "html",
         "fileName" : "out"
      },
