@@ -8,12 +8,14 @@ import base64
 
 
 some_html = """
-<div>Please translate this div. It contains two paragraphs.
-<p>The first one.</p>
-<p>The second</p>
+<div id="part-1">
+    <div>Please translate this div. It contains two paragraphs.
+        <p>The first one.</p>
+        <p>The second</p>
+    </div>
 </div>
-<div>
-This is another div. <b>Bold text</b>
+<div id="part-2">
+    This is another div. <b>Bold text</b>
 </div>
 """
 
